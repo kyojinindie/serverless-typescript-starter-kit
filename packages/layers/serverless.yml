@@ -1,0 +1,33 @@
+service:
+
+frameworkVersion:
+
+custom:
+
+provider:
+  name: aws
+  region:
+  stage:
+
+package:
+  individually: true
+  patterns:
+    - "!**/__tests__/**"
+    - "!**/__mocks__/**"
+    - "!**/*.d.ts"
+    - "!./package.json"
+    - "!./package-lock.json"
+    - "!**/tsconfig.json"
+    - "!**/jest.config.js"
+
+layers:
+  common:
+    path: dist/common
+    name: name
+    description: Common dependencies
+    retain: false
+    package:
+      patterns:
+        - "!./__tests__/**"
+        - "!./package.json"
+        - "!./package-lock.json"
